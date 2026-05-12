@@ -1,0 +1,24 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "ajv": "^8.18.0",
+    "axios": "^1.6.8",
+    "lucide-react": "^0.364.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-qr-barcode-scanner": "^1.0.6",
+    "react-router-dom": "^6.22.3",
+    "react-scripts": "5.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ]
+}

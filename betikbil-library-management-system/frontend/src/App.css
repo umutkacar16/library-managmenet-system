@@ -1,0 +1,133 @@
+/* App.css — Global App Layout Styles */
+
+.page-content {
+  padding: 24px 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Navbar overrides */
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  height: 60px;
+  background-color: var(--bg-panel);
+  border-bottom: 1px solid var(--glass-border);
+  gap: 8px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-brand {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--primary);
+  text-decoration: none;
+  letter-spacing: -0.3px;
+  margin-right: 24px;
+  white-space: nowrap;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.nav-link {
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.nav-link:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-link-staff {
+  color: #f59e0b;
+}
+
+.nav-link-staff:hover {
+  background: rgba(245, 158, 11, 0.1);
+  color: #fbbf24;
+}
+
+.nav-link-admin {
+  color: #c084fc;
+}
+
+.nav-link-admin:hover {
+  background: rgba(192, 132, 252, 0.1);
+  color: #d8b4fe;
+}
+
+.navbar-auth {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.nav-user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.nav-trust-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nav-role-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(192, 132, 252, 0.15);
+  color: #c084fc;
+}
+
+.btn-logout {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-logout:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: var(--danger);
+}
+
+.nav-btn {
+  font-size: 0.875rem;
+  padding: 6px 16px;
+}
+
+/* Home panel */
+.home-panel {
+  max-width: 800px;
+  margin: 40px auto;
+  text-align: center;
+}
