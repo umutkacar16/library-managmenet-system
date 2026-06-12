@@ -932,6 +932,18 @@ def add_closure():
     reason = data.get('reason')
     if not start_time or not end_time or not reason:
         return jsonify({"error": "Eksik bilgi."}), 400
+
+    try:
+        start_dt = datetime.datetime.fromisoformat(start_time.replace('Z', '+00:00'))
+        end_dt = datetime.datetime.fromisoformat(end_time.replace('Z', '+00:00'))
+    except ValueError:
+        return jsonify({"error": "Geçersiz tarih formatı."}), 400
+
+    now = datetime.datetime.now(start_dt.tzinfo) if start_dt.tzinfo else datetime.datetime.now()
+    if start_dt < now:
+        return jsonify({"error": "Geçmiş bir tarihe tatil/kapalı dönem ekleyemezsiniz."}), 400
+    if end_dt <= start_dt:
+        return jsonify({"error": "Bitiş tarihi başlangıç tarihinden sonra olmalıdır."}), 400
     
     conn = get_db_connection()
     cur = conn.cursor()

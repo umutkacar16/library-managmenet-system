@@ -24,6 +24,9 @@ function AdminDashboard() {
   const [seatsData, setSeatsData] = useState([]);
   const [workingHours, setWorkingHours] = useState([]);
 
+  const tzOffset = (new Date()).getTimezoneOffset() * 60000;
+  const nowLocalStr = (new Date(Date.now() - tzOffset)).toISOString().slice(0, 16);
+
   const fetchData = async () => {
     const res = await authFetch(token, 'http://localhost:5000/api/admin/dashboard');
     if (res.ok) setData(await res.json());
@@ -75,6 +78,17 @@ function AdminDashboard() {
 
   const addClosure = async () => {
     if (!closureForm.start_time || !closureForm.end_time || !closureForm.reason) { showMsg('error:Tum alanlari doldurun.'); return; }
+    const startVal = new Date(closureForm.start_time);
+    const endVal = new Date(closureForm.end_time);
+    const now = new Date();
+    if (startVal < now) {
+      showMsg('error:Gecmis bir tarihe tatil/kapali donem ekleyemezsiniz.');
+      return;
+    }
+    if (endVal <= startVal) {
+      showMsg('error:Bitis tarihi baslangic tarihinden sonra olmalidir.');
+      return;
+    }
     const res = await authFetch(token, 'http://localhost:5000/api/admin/closures', {
       method: 'POST', body: JSON.stringify(closureForm)
     });
@@ -184,11 +198,11 @@ function AdminDashboard() {
         <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'flex-end', marginBottom: '20px' }}>
           <div>
             <label style={{ display: 'block', marginBottom: '6px', color: 'var(--text-muted)', fontSize: '0.78rem' }}>Başlangıç</label>
-            <input type="datetime-local" value={closureForm.start_time} onChange={(e) => setClosureForm({ ...closureForm, start_time: e.target.value })} />
+            <input type="datetime-local" min={nowLocalStr} value={closureForm.start_time} onChange={(e) => setClosureForm({ ...closureForm, start_time: e.target.value })} />
           </div>
           <div>
             <label style={{ display: 'block', marginBottom: '6px', color: 'var(--text-muted)', fontSize: '0.78rem' }}>Bitiş</label>
-            <input type="datetime-local" value={closureForm.end_time} onChange={(e) => setClosureForm({ ...closureForm, end_time: e.target.value })} />
+            <input type="datetime-local" min={closureForm.start_time || nowLocalStr} value={closureForm.end_time} onChange={(e) => setClosureForm({ ...closureForm, end_time: e.target.value })} />
           </div>
           <div style={{ flex: 1 }}>
             <label style={{ display: 'block', marginBottom: '6px', color: 'var(--text-muted)', fontSize: '0.78rem' }}>Sebep (Örn: Resmi Tatil)</label>

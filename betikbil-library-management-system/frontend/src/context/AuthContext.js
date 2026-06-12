@@ -8,13 +8,31 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const savedToken = localStorage.getItem('jwt_token');
-    const savedUser = localStorage.getItem('user_data');
-    if (savedToken && savedUser) {
-      setToken(savedToken);
-      setUser(JSON.parse(savedUser));
-    }
-    setLoading(false);
+    const checkAuth = async () => {
+      const savedToken = localStorage.getItem('jwt_token');
+      const savedUser = localStorage.getItem('user_data');
+      if (savedToken && savedUser) {
+        try {
+          const res = await fetch('http://localhost:5000/api/auth/me', {
+            headers: { Authorization: `Bearer ${savedToken}` }
+          });
+          if (res.ok) {
+            const data = await res.json();
+            setToken(savedToken);
+            setUser(data);
+            localStorage.setItem('user_data', JSON.stringify(data));
+          } else {
+            localStorage.removeItem('jwt_token');
+            localStorage.removeItem('user_data');
+          }
+        } catch (err) {
+          setToken(savedToken);
+          setUser(JSON.parse(savedUser));
+        }
+      }
+      setLoading(false);
+    };
+    checkAuth();
   }, []);
 
   const login = (tokenVal, userData) => {
@@ -64,5 +82,14 @@ export function authFetch(token, url, options = {}) {
       ...(options.headers || {}),
       Authorization: `Bearer ${token}`
     }
+  }).then(res => {
+    if (res.status === 401) {
+      localStorage.removeItem('jwt_token');
+      localStorage.removeItem('user_data');
+      if (!window.location.pathname.includes('/auth')) {
+        window.location.href = '/auth';
+      }
+    }
+    return res;
   });
 }

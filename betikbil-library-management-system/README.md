@@ -1,4 +1,4 @@
-# BetikBil Kütüphane Yönetim Sistemi
+Kütüphane Yönetim Sistemi
 
 BetikBil, modern kütüphanelerin ihtiyaçlarını karşılamak üzere tasarlanmış, kapsamlı bir kütüphane ve çalışma alanı yönetim sistemidir. Kullanıcı güven skoru tabanlı ödünç alma sistemi, oda rezervasyonu ve bilgisayar odası kullanım takibi gibi gelişmiş özellikler sunar.
 
