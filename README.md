@@ -103,5 +103,9 @@ Sedat Saral: Projenin başlangıç aşamasındaki kavramsal kurgusunu, sistem mi
 
 Umut Kaçar: Projenin kalite güvence ve test süreçlerini yürütmüş, sistemin kararlı çalışmasını sağlamak amacıyla hata analizlerini gerçekleştirmiştir.
 
+#Proje Lansman Videosu
+
+https://www.youtube.com/watch?v=jYklYSotTUE
+
 # Lisans
 Bu proje eğitim ve geliştirme amaçlı hazırlanmıştır.
