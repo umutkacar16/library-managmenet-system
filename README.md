@@ -93,6 +93,15 @@ betikbil-library-management-system/
 │   └── package.json        # JS bağımlılıkları
 └── README.md
 ```
+#Projeye Katkıda bulunanlar
+
+Muhammet Yusuf Ayar: Projenin backend ve frontend yazılım geliştirme süreçlerini üstlenmiş, kullanıcı arayüzü tasarımlarını ve kodlamasını tamamlamıştır.
+
+Oğuzhan Talha Kurt: Yazılım geliştirme ve entegrasyon süreçlerinde teknik destek sağlayarak kodlama aşamasına katkıda bulunmuştur.
+
+Sedat Saral: Projenin başlangıç aşamasındaki kavramsal kurgusunu, sistem mimarisini ve genel işleyiş planlamasını gerçekleştirmiştir.
+
+Umut Kaçar: Projenin kalite güvence ve test süreçlerini yürütmüş, sistemin kararlı çalışmasını sağlamak amacıyla hata analizlerini gerçekleştirmiştir.
 
 # Lisans
 Bu proje eğitim ve geliştirme amaçlı hazırlanmıştır.
